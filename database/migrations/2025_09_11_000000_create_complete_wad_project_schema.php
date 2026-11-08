@@ -50,11 +50,12 @@ class CreateCompleteWadProjectSchema extends Migration
             $table->string('full_name');
             $table->string('email');
             $table->string('password');
-            $table->integer('phone_number');
+            $table->string('phone_number');
             $table->string('ID')->comment('student registration ID or employee ID likewise');
             $table->unsignedInteger('role_id');
             $table->unsignedInteger('section_id')->nullable();
-            $table->timestamp('created_at');
+            $table->rememberToken();
+            $table->timestamp('created_at')->nullable();
 
             // Add unique constraints
             $table->unique('email');

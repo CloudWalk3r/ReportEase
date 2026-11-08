@@ -1,0 +1,5 @@
+/* ==========================================================================
+   ReportEase Design System & Global Styles (WCAG 2.2 AA Compliant)
+   Synchronized source for Laravel Mix (`webpack.mix.js`)
+   ========================================================================== */
+@import '../../public/css/app.css';

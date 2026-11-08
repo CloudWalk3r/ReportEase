@@ -1,39 +1,56 @@
 @extends('layouts.dashboard')
 
-@section('content')
+@section('title', 'Account Settings — ReportEase')
+
+@push('styles')
 <style>
 .settings-container {
-    max-width: 800px;
+    max-width: 760px;
     margin: 0 auto;
-    padding: 2rem;
-    min-height: 100vh;
+    padding: var(--space-2) 0;
 }
 
 .settings-content {
-    border-radius: 12px;
-    padding: 3rem;
+    background-color: var(--color-bg-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6) var(--space-4);
+    box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 640px) {
+    .settings-content {
+        padding: var(--space-8);
+    }
 }
 
 .settings-title {
     text-align: center;
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #333;
-    margin-bottom: 3rem;
+    font-size: var(--text-2xl);
+    font-weight: 800;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-2) 0;
+}
+
+.settings-subtitle {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+    margin: 0 0 var(--space-6) 0;
 }
 
 .profile-image-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 3rem;
-    position: relative;
+    margin-bottom: var(--space-6);
 }
 
 .profile-image {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background: #ddd;
+    width: 112px;
+    height: 112px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-muted);
+    border: 3px solid var(--color-brand-border);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -47,167 +64,97 @@
     object-fit: cover;
 }
 
-.profile-edit-icon {
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
-    background: #ff6600;
-    color: white;
-    border-radius: 50%;
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    font-size: 14px;
-    border: 3px solid white;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
 }
 
-.profile-edit-icon:hover {
-    background: #e55a00;
-    transform: scale(1.1);
+@media (min-width: 640px) {
+    .form-row {
+        grid-template-columns: 1fr 1fr;
+        gap: var(--space-4);
+    }
 }
 
 .form-group {
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--space-5);
 }
 
 .form-label {
     display: block;
-    font-size: 0.9rem;
-    color: #666;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-2);
+    font-weight: 600;
 }
 
 .form-input {
     width: 100%;
-    padding: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    min-height: var(--touch-target-min);
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-md);
     font-size: 1rem;
-    background: #f8f9fa;
-    transition: all 0.3s ease;
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .form-input:focus {
     outline: none;
-    border-color: #ff6600;
-    background: white;
+    border-color: var(--color-brand-primary);
+    box-shadow: var(--focus-ring);
 }
 
-.form-input:disabled {
-    background: #f5f5f5;
-    color: #999;
+.form-input:disabled,
+.readonly-field {
+    background: var(--color-bg-muted) !important;
+    color: var(--color-text-muted);
+    border-color: var(--color-border);
     cursor: not-allowed;
 }
 
-.input-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.input-container .form-input {
-    flex: 1;
-}
-
-.edit-icon {
-    color: #666;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 8px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
-    flex-shrink: 0;
-}
-
-.edit-icon:hover {
-    background-color: #f0f0f0;
-    color: #ff6600;
+.readonly-label {
+    color: var(--color-text-muted);
 }
 
 .save-btn {
     width: 100%;
-    background: #ff6600;
-    color: white;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    font-size: 1.1rem;
-    font-weight: 600;
+    background-color: var(--color-brand-primary);
+    color: var(--color-text-on-brand);
+    border: 2px solid var(--color-brand-primary);
+    padding: 0.875rem 2rem;
+    border-radius: var(--radius-md);
+    font-size: var(--text-base);
+    font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 1rem;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    margin-top: var(--space-2);
 }
 
 .save-btn:hover {
-    background: #e55a00;
-}
-
-.success-message {
-    background: #d4edda;
-    color: #155724;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    border: 1px solid #c3e6cb;
-}
-
-.error-message {
-    background: #f8d7da;
-    color: #721c24;
-    padding: 1rem;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    border: 1px solid #f5c6cb;
-}
-
-/* Readonly fields styling */
-.readonly-field {
-    background: #f8f9fa !important;
-    color: #6c757d;
-    border-color: #e9ecef;
-}
-
-.readonly-label {
-    color: #6c757d;
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-}
-
-@media (max-width: 768px) {
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-    
-    .settings-content {
-        padding: 2rem;
-    }
+    background-color: var(--color-brand-primary-hover);
+    border-color: var(--color-brand-primary-hover);
 }
 </style>
+@endpush
 
+@section('content')
 <div class="settings-container">
     <div class="settings-content">
-        <h1 class="settings-title">Edit Profile</h1>
+        <h1 class="settings-title">Edit <span class="brand-accent">Profile</span></h1>
+        <p class="settings-subtitle">Update your contact details below. University ID and assigned role are managed by administration.</p>
         
-        <!-- Success/Error Messages -->
         @if(session('success'))
-            <div class="success-message">
-                {{ session('success') }}
+            <div class="alert alert-success" role="status" aria-live="polite">
+                <p>{{ session('success') }}</p>
             </div>
         @endif
         
         @if($errors->any())
-            <div class="error-message">
-                <ul style="margin: 0; padding-left: 1.5rem;">
+            <div class="alert alert-danger" role="alert" aria-live="assertive">
+                <ul>
                     @foreach($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
@@ -218,10 +165,7 @@
         <!-- Profile Image -->
         <div class="profile-image-container">
             <div class="profile-image">
-                <img src="{{ asset('images/user.png') }}" alt="Profile Picture">
-                <div class="profile-edit-icon">
-                    <i class="fas fa-edit"></i>
-                </div>
+                <img src="{{ asset('images/user.png') }}" alt="Profile avatar for {{ $user->full_name ?? 'User' }}" width="112" height="112">
             </div>
         </div>
         
@@ -232,70 +176,113 @@
             <!-- First Name and Last Name Row -->
             <div class="form-row">
                 <div class="form-group">
-                    <label class="form-label">First Name</label>
-                    <div class="input-container">
-                        <input type="text" name="full_name" class="form-input" 
-                               value="{{ old('full_name', $user->first_name) }}" 
-                               placeholder="Enter your first name">
-                        <i class="fas fa-edit edit-icon"></i>
-                    </div>
+                    <label for="first_name" class="form-label">
+                        First Name <span class="required-indicator" aria-hidden="true">*</span>
+                    </label>
+                    <input id="first_name"
+                           type="text"
+                           name="first_name"
+                           autocomplete="given-name"
+                           class="form-input @error('first_name') is-invalid @enderror"
+                           value="{{ old('first_name', $user->first_name ?? '') }}"
+                           placeholder="Enter your first name"
+                           required
+                           aria-required="true"
+                           @error('first_name') aria-invalid="true" aria-describedby="first_name-error" @enderror>
+                    @error('first_name')
+                        <span id="first_name-error" class="field-error" role="alert">{{ $message }}</span>
+                    @enderror
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label">Last Name</label>
-                    <div class="input-container">
-                        <input type="text" name="last_name" class="form-input" 
-                               value="{{ old('last_name', $user->last_name) }}" 
-                               placeholder="Enter your last name">
-                        <i class="fas fa-edit edit-icon"></i>
-                    </div>
+                    <label for="last_name" class="form-label">
+                        Last Name <span class="required-indicator" aria-hidden="true">*</span>
+                    </label>
+                    <input id="last_name"
+                           type="text"
+                           name="last_name"
+                           autocomplete="family-name"
+                           class="form-input @error('last_name') is-invalid @enderror"
+                           value="{{ old('last_name', $user->last_name ?? '') }}"
+                           placeholder="Enter your last name"
+                           required
+                           aria-required="true"
+                           @error('last_name') aria-invalid="true" aria-describedby="last_name-error" @enderror>
+                    @error('last_name')
+                        <span id="last_name-error" class="field-error" role="alert">{{ $message }}</span>
+                    @enderror
                 </div>
             </div>
             
             <!-- Phone Number -->
             <div class="form-group">
-                <label class="form-label">Phone Number</label>
-                <div class="input-container">
-                    <input type="tel" name="phone_number" class="form-input" 
-                           value="{{ old('phone_number', $user->phone_number) }}" 
-                           placeholder="Enter your phone number">
-                    <i class="fas fa-edit edit-icon"></i>
-                </div>
+                <label for="phone_number" class="form-label">
+                    Phone Number <span class="required-indicator" aria-hidden="true">*</span>
+                </label>
+                <input id="phone_number"
+                       type="tel"
+                       name="phone_number"
+                       inputmode="tel"
+                       autocomplete="tel"
+                       class="form-input @error('phone_number') is-invalid @enderror"
+                       value="{{ old('phone_number', $user->phone_number ?? '') }}"
+                       placeholder="e.g., 0771234567"
+                       required
+                       aria-required="true"
+                       @error('phone_number') aria-invalid="true" aria-describedby="phone_number-error" @enderror>
+                @error('phone_number')
+                    <span id="phone_number-error" class="field-error" role="alert">{{ $message }}</span>
+                @enderror
             </div>
             
             <!-- Email Address -->
             <div class="form-group">
-                <label class="form-label">Email Address</label>
-                <div class="input-container">
-                    <input type="email" name="email" class="form-input" 
-                           value="{{ old('email', $user->email) }}" 
-                           placeholder="Enter your email address">
-                    <i class="fas fa-edit edit-icon"></i>
-                </div>
+                <label for="email" class="form-label">
+                    Email Address <span class="required-indicator" aria-hidden="true">*</span>
+                </label>
+                <input id="email"
+                       type="email"
+                       name="email"
+                       inputmode="email"
+                       autocomplete="email"
+                       class="form-input @error('email') is-invalid @enderror"
+                       value="{{ old('email', $user->email ?? '') }}"
+                       placeholder="you@std.appsc.sab.ac.lk"
+                       required
+                       aria-required="true"
+                       @error('email') aria-invalid="true" aria-describedby="email-error" @enderror>
+                @error('email')
+                    <span id="email-error" class="field-error" role="alert">{{ $message }}</span>
+                @enderror
             </div>
             
             <!-- Registration Number (Read Only) -->
             <div class="form-group">
-                <label class="form-label readonly-label">Registration number</label>
-                <input type="text" class="form-input readonly-field" 
-                       value="{{ $user->ID }}" disabled>
+                <label for="registration_number" class="form-label readonly-label">Registration / Staff Number (Read-only)</label>
+                <input id="registration_number"
+                       type="text"
+                       class="form-input readonly-field"
+                       value="{{ $user->ID ?? '' }}"
+                       disabled
+                       aria-readonly="true">
             </div>
             
             <!-- User Role (Read Only) -->
             <div class="form-group">
-                <label class="form-label readonly-label">Your Role</label>
-                <input type="text" class="form-input readonly-field" 
-                       value="{{ $user->role->role_name ?? 'Unknown' }}" disabled>
+                <label for="user_role" class="form-label readonly-label">Assigned University Role (Read-only)</label>
+                <input id="user_role"
+                       type="text"
+                       class="form-input readonly-field"
+                       value="{{ $user->role->role_name ?? 'Unknown' }}"
+                       disabled
+                       aria-readonly="true">
             </div>
             
             <!-- Save Button -->
-            <button type="submit" class="save-btn">
+            <button type="submit" class="save-btn" data-loading-text="Saving changes...">
                 SAVE CHANGES
             </button>
         </form>
     </div>
 </div>
-
-<!-- Font Awesome for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 @endsection

@@ -14,10 +14,18 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        DB::insert("INSERT IGNORE INTO Roles (role_id, role_name) VALUES
-        (1, 'Admin'),
-        (2, 'Faculty Staff'),
-        (3, 'Maintenance Department'),
-        (4, 'Student')");
+        $roles = [
+            1 => 'Admin',
+            2 => 'Faculty Staff',
+            3 => 'Maintenance Department',
+            4 => 'Student',
+        ];
+
+        foreach ($roles as $id => $name) {
+            DB::table('Roles')->updateOrInsert(
+                ['role_id' => $id],
+                ['role_name' => $name]
+            );
+        }
     }
 }

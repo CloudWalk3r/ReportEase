@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard — ReportEase (Preview)</title>
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="app-container">
+        <header class="app-header" role="banner">
+            <div class="header-left">
+                <button type="button" class="mobile-nav-toggle" aria-expanded="false" aria-controls="dashboard-sidebar" aria-label="Toggle navigation menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                    <span class="mobile-nav-label">Menu</span>
+                </button>
+                <a href="dashboard.html" class="logo" aria-label="ReportEase Home">
+                    <img src="../images/RE_White.png" alt="ReportEase Logo" width="140" height="40">
+                </a>
+            </div>
+            <nav class="navigation" aria-label="User account navigation">
+                <a href="settings.html" class="nav-link profile-trigger" aria-label="Account settings">
+                    <img src="../images/user.png" alt="" class="header-avatar" width="32" height="32" aria-hidden="true">
+                    <span class="header-user-name">Samanalee</span>
+                </a>
+                <form class="logout-form"><button type="button" class="nav-link logout-button"><span>Logout</span></button></form>
+            </nav>
+        </header>
+
+        <div class="dashboard-container">
+            <div id="sidebar-backdrop" class="sidebar-backdrop" aria-hidden="true"></div>
+            <aside id="dashboard-sidebar" class="sidebar" aria-label="Main menu">
+                <nav aria-label="Workspace navigation">
+                    <ul class="sidebar-nav-list">
+                        <li class="active"><a href="dashboard.html" class="nav-link" aria-current="page"><img src="../images/home.png" alt="" class="nav-icon" width="20" height="20" aria-hidden="true"><span class="nav-text">Dashboard</span></a></li>
+                        <li><a href="create.html" class="nav-link"><svg class="nav-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg><span class="nav-text">Report Issue</span></a></li>
+                        <li><a href="issues.html" class="nav-link"><svg class="nav-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span class="nav-text">Reported Issues</span></a></li>
+                        <li><a href="settings.html" class="nav-link"><img src="../images/settings.png" alt="" class="nav-icon" width="20" height="20" aria-hidden="true"><span class="nav-text">Settings</span></a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <main id="main-content" class="main-content" tabindex="-1">
+                <section class="dashboard-overview" aria-labelledby="dashboard-heading">
+                    <div class="alert alert-success" role="status"><p>You have successfully logged in</p></div>
+
+                    <h1 id="dashboard-heading" class="dashboard-greeting">Welcome, <span class="highlight">Samanalee</span></h1>
+                    <p class="dashboard-subgreeting">Report and track your campus maintenance issues.</p>
+
+                    <div class="stats-grid">
+                        <div class="stat-card is-total"><span class="stat-value">12</span><span class="stat-label">Total Issues</span></div>
+                        <div class="stat-card is-pending"><span class="stat-value">3</span><span class="stat-label">Pending</span></div>
+                        <div class="stat-card is-progress"><span class="stat-value">5</span><span class="stat-label">In Progress</span></div>
+                        <div class="stat-card is-resolved"><span class="stat-value">4</span><span class="stat-label">Resolved</span></div>
+                    </div>
+
+                    <div class="dashboard-actions">
+                        <a href="create.html" class="btn btn-primary">Report an Issue</a>
+                        <a href="issues.html" class="btn btn-secondary">View All Issues</a>
+                        <a href="settings.html" class="btn btn-secondary">Account Settings</a>
+                    </div>
+
+                    <div class="panel">
+                        <div class="panel-header">
+                            <h2 class="panel-title">Your Recent Reports</h2>
+                            <a href="issues.html" class="panel-link">View all &rarr;</a>
+                        </div>
+                        <ul class="recent-list">
+                            <li class="recent-item"><div class="recent-item-main"><a href="detail.html" class="recent-item-title">Projector in NLH is not working</a><span class="recent-item-meta">IS1 &bull; Oct 25, 2026</span></div><span class="status-badge status-pending">Pending</span></li>
+                            <li class="recent-item"><div class="recent-item-main"><a href="detail.html" class="recent-item-title">Wi-Fi connectivity issues in Library</a><span class="recent-item-meta">IS2 &bull; Oct 24, 2026</span></div><span class="status-badge status-being_resolved">Being Resolved</span></li>
+                            <li class="recent-item"><div class="recent-item-main"><a href="detail.html" class="recent-item-title">Broken chair in Lecture Hall 2</a><span class="recent-item-meta">IS3 &bull; Oct 23, 2026</span></div><span class="status-badge status-accepted">Accepted</span></li>
+                            <li class="recent-item"><div class="recent-item-main"><a href="detail.html" class="recent-item-title">AC not cooling in Lab 3</a><span class="recent-item-meta">IS4 &bull; Oct 22, 2026</span></div><span class="status-badge status-resolved">Resolved</span></li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <footer class="app-footer" role="contentinfo">
+            <p>&copy; 2026 ReportEase &mdash; Faculty of Computing, Sabaragamuwa University of Sri Lanka.</p>
+        </footer>
+    </div>
+    <script src="../js/app-ui.js" defer></script>
+</body>
+</html>

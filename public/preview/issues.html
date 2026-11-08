@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reported Issues — ReportEase (Preview)</title>
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/previous-report.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="app-container">
+        <header class="app-header" role="banner">
+            <div class="header-left">
+                <button type="button" class="mobile-nav-toggle" aria-expanded="false" aria-controls="dashboard-sidebar" aria-label="Toggle navigation menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                    <span class="mobile-nav-label">Menu</span>
+                </button>
+                <a href="dashboard.html" class="logo" aria-label="ReportEase Home"><img src="../images/RE_White.png" alt="ReportEase Logo" width="140" height="40"></a>
+            </div>
+            <nav class="navigation" aria-label="User account navigation">
+                <a href="settings.html" class="nav-link profile-trigger"><img src="../images/user.png" alt="" class="header-avatar" width="32" height="32" aria-hidden="true"><span class="header-user-name">Samanalee</span></a>
+                <form class="logout-form"><button type="button" class="nav-link logout-button"><span>Logout</span></button></form>
+            </nav>
+        </header>
+        <div class="dashboard-container">
+            <div id="sidebar-backdrop" class="sidebar-backdrop" aria-hidden="true"></div>
+            <aside id="dashboard-sidebar" class="sidebar" aria-label="Main menu">
+                <nav aria-label="Workspace navigation">
+                    <ul class="sidebar-nav-list">
+                        <li><a href="dashboard.html" class="nav-link"><img src="../images/home.png" alt="" class="nav-icon" width="20" height="20" aria-hidden="true"><span class="nav-text">Dashboard</span></a></li>
+                        <li><a href="create.html" class="nav-link"><svg class="nav-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg><span class="nav-text">Report Issue</span></a></li>
+                        <li class="active"><a href="issues.html" class="nav-link" aria-current="page"><svg class="nav-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span class="nav-text">Reported Issues</span></a></li>
+                        <li><a href="settings.html" class="nav-link"><img src="../images/settings.png" alt="" class="nav-icon" width="20" height="20" aria-hidden="true"><span class="nav-text">Settings</span></a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <main id="main-content" class="main-content" tabindex="-1">
+                <div class="reports-container">
+                    <div class="header-container">
+                        <div>
+                            <h1 class="reports-title">All <span class="brand-accent">Reported Issues</span></h1>
+                            <p class="reports-subtitle">Track campus maintenance reports, current status, and resolution updates.</p>
+                        </div>
+                        <a class="new-issue-btn" href="create.html"><span aria-hidden="true">+</span> REPORT A NEW ISSUE</a>
+                    </div>
+                    <div class="table-responsive-wrapper" role="region" aria-label="Reported issues list" tabindex="0">
+                        <table class="reports-table">
+                            <thead>
+                                <tr class="table-header">
+                                    <th scope="col">Issue ID</th><th scope="col">Title</th><th scope="col">Status</th><th scope="col">Reporter</th><th scope="col">Date</th><th scope="col"><span class="sr-only">Actions</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="table-row"><td data-label="Issue ID" class="cell-id"><span class="issue-id-pill">IS1</span></td><td data-label="Title" class="cell-title"><a href="detail.html" class="issue-row-link">Projector in NLH is not working</a></td><td data-label="Status"><span class="status-badge status-pending">Pending</span></td><td data-label="Reporter">Samanalee Fernando</td><td data-label="Date">Oct 25, 2026</td><td data-label="Action" class="cell-action"><a href="detail.html" class="see-more-link">VIEW</a></td></tr>
+                                <tr class="table-row"><td data-label="Issue ID" class="cell-id"><span class="issue-id-pill">IS2</span></td><td data-label="Title" class="cell-title"><a href="detail.html" class="issue-row-link">Wi-Fi connectivity issues in Library</a></td><td data-label="Status"><span class="status-badge status-being_resolved">Being Resolved</span></td><td data-label="Reporter">John Doe</td><td data-label="Date">Oct 24, 2026</td><td data-label="Action" class="cell-action"><a href="detail.html" class="see-more-link">VIEW</a></td></tr>
+                                <tr class="table-row"><td data-label="Issue ID" class="cell-id"><span class="issue-id-pill">IS3</span></td><td data-label="Title" class="cell-title"><a href="detail.html" class="issue-row-link">Broken chair in Lecture Hall 2</a></td><td data-label="Status"><span class="status-badge status-accepted">Accepted</span></td><td data-label="Reporter">Jane Smith</td><td data-label="Date">Oct 23, 2026</td><td data-label="Action" class="cell-action"><a href="detail.html" class="see-more-link">VIEW</a></td></tr>
+                                <tr class="table-row"><td data-label="Issue ID" class="cell-id"><span class="issue-id-pill">IS4</span></td><td data-label="Title" class="cell-title"><a href="detail.html" class="issue-row-link">AC not cooling in Lab 3</a></td><td data-label="Status"><span class="status-badge status-under_review">Under Review</span></td><td data-label="Reporter">Nimal Perera</td><td data-label="Date">Oct 22, 2026</td><td data-label="Action" class="cell-action"><a href="detail.html" class="see-more-link">VIEW</a></td></tr>
+                                <tr class="table-row"><td data-label="Issue ID" class="cell-id"><span class="issue-id-pill">IS5</span></td><td data-label="Title" class="cell-title"><a href="detail.html" class="issue-row-link">Water leak near main staircase</a></td><td data-label="Status"><span class="status-badge status-rejected">Rejected</span></td><td data-label="Reporter">Kavindu A.</td><td data-label="Date">Oct 21, 2026</td><td data-label="Action" class="cell-action"><a href="detail.html" class="see-more-link">VIEW</a></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <nav class="pagination-nav" aria-label="Reported issues pagination">
+                        <span class="pagination-btn is-disabled" aria-disabled="true">&larr; Previous</span>
+                        <span class="pagination-status">Page 1 of 3</span>
+                        <a class="pagination-btn" href="#" rel="next">Next &rarr;</a>
+                    </nav>
+                </div>
+            </main>
+        </div>
+        <footer class="app-footer" role="contentinfo"><p>&copy; 2026 ReportEase &mdash; Faculty of Computing, Sabaragamuwa University of Sri Lanka.</p></footer>
+    </div>
+    <script src="../js/app-ui.js" defer></script>
+</body>
+</html>

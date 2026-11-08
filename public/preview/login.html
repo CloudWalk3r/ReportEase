@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sign In — ReportEase (Preview)</title>
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/auth.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="app-container">
+        <header class="auth-header" role="banner">
+            <a href="welcome.html" class="logo-container" aria-label="ReportEase Home"><img src="../images/RE_White.png" alt="ReportEase Logo" class="logo" width="140" height="40"></a>
+            <nav class="auth-nav" aria-label="Authentication navigation">
+                <a href="register.html">Sign Up</a>
+                <img src="../images/user.png" alt="" class="profile-icon" width="36" height="36" aria-hidden="true">
+            </nav>
+        </header>
+        <main id="main-content" class="auth-main" tabindex="-1">
+            <div class="auth-left">
+                <div class="login-form">
+                    <h1 class="auth-heading">Sign in</h1>
+                    <p class="auth-subtitle">Enter your university credentials to access your dashboard.</p>
+                    <form method="POST" action="#">
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="required-indicator" aria-hidden="true">*</span></label>
+                            <input id="email" type="email" name="email" inputmode="email" autocomplete="email" placeholder="you@std.appsc.sab.ac.lk" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password <span class="required-indicator" aria-hidden="true">*</span></label>
+                            <input id="password" type="password" name="password" autocomplete="current-password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="form-group form-remember">
+                            <label for="remember" class="remember-label"><input id="remember" type="checkbox" name="remember" value="1"><span>Remember me on this device</span></label>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn-login">LOGIN</button>
+                            <a href="#" class="forgot-password">Forgot your password?</a>
+                        </div>
+                    </form>
+                    <div class="create-account-section">
+                        <p>Don't have an account yet?</p>
+                        <a href="register.html" class="btn-create-account">CREATE NEW ACCOUNT</a>
+                    </div>
+                </div>
+            </div>
+            <div class="auth-right" aria-hidden="true">
+                <div class="auth-background-image"><div class="background-text"><p class="auth-quote">Report campus maintenance issues in seconds and track resolution progress in real time.</p></div></div>
+            </div>
+        </main>
+        <footer class="app-footer" role="contentinfo"><p>&copy; 2026 ReportEase &mdash; Faculty of Computing, Sabaragamuwa University of Sri Lanka.</p></footer>
+    </div>
+    <script src="../js/app-ui.js" defer></script>
+</body>
+</html>

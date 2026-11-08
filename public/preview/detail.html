@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue Details — ReportEase (Preview)</title>
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/auth.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/viewissues.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="app-container">
+        <header class="app-header" role="banner">
+            <div class="header-left">
+                <button type="button" class="mobile-nav-toggle" aria-expanded="false" aria-controls="dashboard-sidebar" aria-label="Toggle navigation menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg><span class="mobile-nav-label">Menu</span></button>
+                <a href="dashboard.html" class="logo" aria-label="ReportEase Home"><img src="../images/RE_White.png" alt="ReportEase Logo" width="140" height="40"></a>
+            </div>
+            <nav class="navigation" aria-label="User account navigation">
+                <a href="settings.html" class="nav-link profile-trigger"><img src="../images/user.png" alt="" class="header-avatar" width="32" height="32" aria-hidden="true"><span class="header-user-name">Faculty</span></a>
+                <form class="logout-form"><button type="button" class="nav-link logout-button"><span>Logout</span></button></form>
+            </nav>
+        </header>
+        <div class="dashboard-container">
+            <div id="sidebar-backdrop" class="sidebar-backdrop" aria-hidden="true"></div>
+            <aside id="dashboard-sidebar" class="sidebar" aria-label="Main menu">
+                <nav aria-label="Workspace navigation">
+                    <ul class="sidebar-nav-list">
+                        <li><a href="dashboard.html" class="nav-link"><img src="../images/home.png" alt="" class="nav-icon" width="20" height="20" aria-hidden="true"><span class="nav-text">Dashboard</span></a></li>
+                        <li><a href="create.html" class="nav-link"><svg class="nav-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg><span class="nav-text">Report Issue</span></a></li>
+                        <li class="active"><a href="issues.html" class="nav-link" aria-current="page"><svg class="nav-icon-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg><span class="nav-text">Reported Issues</span></a></li>
+                        <li><a href="settings.html" class="nav-link"><img src="../images/settings.png" alt="" class="nav-icon" width="20" height="20" aria-hidden="true"><span class="nav-text">Settings</span></a></li>
+                    </ul>
+                </nav>
+            </aside>
+            <main id="main-content" class="main-content" tabindex="-1">
+                <article class="issue-container" aria-labelledby="issue-main-heading">
+                    <div class="issue-top-nav"><a href="issues.html" class="back-link">&larr; Back to Reported Issues</a></div>
+                    <header class="issue-header-row">
+                        <h1 id="issue-main-heading" class="issue-header">Issue No: <span class="issue-number">IS1</span></h1>
+                        <span class="status-badge status-pending">Pending</span>
+                    </header>
+                    <h2 class="issue-title issue-title-main">Projector in the NLH is not working</h2>
+                    <p class="issue-description">The ceiling projector in the New Lecture Hall does not power on. Lectures scheduled this week rely on it, so a quick fix would be appreciated.</p>
+                    <section aria-label="Issue metadata" class="info-section">
+                        <div class="info-column">
+                            <div class="info-item"><p class="info-label">Reporter's Name</p><p class="info-value">Samanalee Fernando</p></div>
+                            <div class="info-item"><p class="info-label">Reporter's Email</p><p class="info-value">samanalee@std.appsc.sab.ac.lk</p></div>
+                            <div class="info-item"><p class="info-label">Issue Location</p><p class="info-value">New Lecture Hall (NLH)</p></div>
+                        </div>
+                        <div class="info-column">
+                            <div class="info-item"><p class="info-label">User ID</p><p class="info-value">21CIS004</p></div>
+                            <div class="info-item"><p class="info-label">Reported Date</p><p class="info-value">25/10/2026</p></div>
+                            <div class="info-item"><p class="info-label">Reporter's Role</p><p class="info-value">Student</p></div>
+                        </div>
+                    </section>
+                    <section class="attachment-container" aria-labelledby="attachments-heading">
+                        <h3 id="attachments-heading" class="info-label">Attachments</h3>
+                        <div class="attachment-grid">
+                            <div class="attachment-item"><div class="attachment-thumbnail-43 no-attachment" role="img" aria-label="No photo attachments uploaded for this issue"><span class="attachment-icon" aria-hidden="true">&#128247;</span><small class="attachment-filename">No attachments uploaded</small></div></div>
+                        </div>
+                    </section>
+                    <section class="status-triage-section" aria-labelledby="status-section-heading">
+                        <h3 id="status-section-heading" class="info-label">Current Issue Status: <span class="status-badge status-pending">Pending</span></h3>
+                        <form action="#" method="POST" class="status-update-form">
+                            <div class="status-form-controls">
+                                <div class="status-select-group">
+                                    <label for="status-action" class="info-label">Select New Status Action</label>
+                                    <select id="status-action" name="action" class="status-select" required>
+                                        <option value="" disabled selected>Choose status action...</option>
+                                        <option value="accepted">Accept Issue</option>
+                                        <option value="under_review">Set to Under Review</option>
+                                        <option value="rejected">Reject Issue (Destructive)</option>
+                                    </select>
+                                </div>
+                                <button type="button" class="submit-button">UPDATE STATUS</button>
+                            </div>
+                        </form>
+                    </section>
+                </article>
+            </main>
+        </div>
+        <footer class="app-footer" role="contentinfo"><p>&copy; 2026 ReportEase &mdash; Faculty of Computing, Sabaragamuwa University of Sri Lanka.</p></footer>
+    </div>
+    <script src="../js/app-ui.js" defer></script>
+</body>
+</html>

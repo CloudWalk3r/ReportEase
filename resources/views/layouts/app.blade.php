@@ -4,42 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ReportEase</title>
+    <title>@yield('title', 'ReportEase')</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    @stack('styles')
 </head>
 <body>
-    <div class="app-container"> {{-- Renamed for clarity --}}
-        <header class="app-header">
-            <div class="logo">
-                {{-- Assuming RE_White.png is suitable for a dark background --}}
-                <img src="{{ asset('images/RE_White.png') }}" alt="ReportEase Logo">
-            </div>
-            <nav class="navigation">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div class="app-container">
+        <header class="app-header" role="banner">
+            <a href="{{ route('welcome') }}" class="logo" aria-label="ReportEase Home">
+                <img src="{{ asset('images/RE_White.png') }}" alt="ReportEase Logo" width="140" height="40">
+            </a>
+            <nav class="navigation" aria-label="Primary navigation">
                 @guest
                     <a href="{{ route('login') }}" class="nav-link">Log In</a>
                     <div class="profile-icon">
-                        <img src="{{ asset('images/user.png') }}" alt="Profile">
+                        <img src="{{ asset('images/user.png') }}" alt="" width="36" height="36" aria-hidden="true">
                     </div>
                 @endguest
                 @auth
-                    {{-- Add authenticated user navigation here if needed --}}
                     <div class="profile-icon">
-                        <img src="{{ asset('images/user.png') }}" alt="Profile">
+                        <img src="{{ asset('images/user.png') }}" alt="" width="36" height="36" aria-hidden="true">
                     </div>
-                    <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                    <form method="POST" action="{{ route('logout') }}" class="logout-form">
                         @csrf
-                        <button type="submit" class="nav-link logout-button">Logout</button>
+                        <button type="submit" class="nav-link logout-button" data-loading-text="Logging out...">Logout</button>
                     </form>
                 @endauth
             </nav>
         </header>
-        <main class="main-content">
+
+        <main id="main-content" class="main-content" tabindex="-1">
             @yield('content')
         </main>
+
+        <footer class="app-footer" role="contentinfo">
+            <p>&copy; {{ date('Y') }} ReportEase &mdash; Faculty of Computing, Sabaragamuwa University of Sri Lanka.</p>
+        </footer>
     </div>
-    {{-- Add JS scripts here if needed --}}
+
+    <script src="{{ asset('js/app-ui.js') }}" defer></script>
+    @stack('scripts')
 </body>
 </html>

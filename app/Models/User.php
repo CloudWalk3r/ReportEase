@@ -30,7 +30,6 @@ class User extends Authenticatable implements CanResetPassword
     ];
 
     protected $casts = [
-        'phone_number' => 'integer',
         'role_id' => 'integer',
         'section_id' => 'integer',
         'created_at' => 'datetime',

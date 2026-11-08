@@ -14,10 +14,18 @@ class SectionSeeder extends Seeder
      */
     public function run()
     {
-        DB::insert("INSERT IGNORE INTO Section (section_id, section_name, description) VALUES
-        (1, 'Electrical Maintenance', 'Handles electrical systems and wiring'),
-        (2, 'Mechanical Maintenance', 'Responsible for machinery and equipment'),
-        (3, 'Civil Works', 'Building infrastructure and structural repairs'),
-        (4, 'General Maintenance', 'General facility upkeep and repairs')");
+        $sections = [
+            1 => ['name' => 'Electrical Maintenance', 'description' => 'Handles electrical systems and wiring'],
+            2 => ['name' => 'Mechanical Maintenance', 'description' => 'Responsible for machinery and equipment'],
+            3 => ['name' => 'Civil Works', 'description' => 'Building infrastructure and structural repairs'],
+            4 => ['name' => 'General Maintenance', 'description' => 'General facility upkeep and repairs'],
+        ];
+
+        foreach ($sections as $id => $section) {
+            DB::table('Section')->updateOrInsert(
+                ['section_id' => $id],
+                ['section_name' => $section['name'], 'description' => $section['description']]
+            );
+        }
     }
 }

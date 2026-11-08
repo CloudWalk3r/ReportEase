@@ -1,18 +1,19 @@
 @extends('layouts.dashboard')
 
-@section('content')
+@section('title', 'Maintenance Dashboard — ReportEase')
+
+@push('styles')
     <link rel="stylesheet" href="{{ asset('css/maintenancedep-dash.css') }}">
-    <div class="welcome-section">
-        <h2>Welcome, <span class="highlight">{{ $user && $user->full_name ? explode(' ', $user->full_name)[0] : 'Maintenance Staff' }}!</span></h2>
+@endpush
 
-        <div class="profile-card">
-            <img src="{{ asset('images/user.png') }}" alt="Profile Picture">
-            <h3>{{ $user->full_name ?? 'Maintenance Staff' }}</h3>
-            <p class="role-badge">{{ $user->role->role_name ?? 'Maintenance Department' }}</p>
-        </div>
-
-        <div class="action-buttons">
-            <a href="{{ route('previous.reports') }}" class="btn btn-secondary">POSTED ISSUES</a>
-        </div>
-    </div>
+@section('content')
+    @include('shared.dashboard-overview', [
+        'name' => $user && $user->full_name ? explode(' ', $user->full_name)[0] : 'Maintenance Staff',
+        'roleName' => $user->role->role_name ?? 'Maintenance Department',
+        'subgreeting' => 'Resolve assigned maintenance issues and keep statuses up to date.',
+        'stats' => $stats,
+        'recentIssues' => $recentIssues,
+        'recentTitle' => 'Recent Campus Reports',
+        'canReport' => false,
+    ])
 @stop

@@ -8,14 +8,37 @@ A comprehensive web application for managing and tracking issues within a univer
 
 ## 📋 Table of Contents
 - [Features](#-features)
+- [Screenshots](#-screenshots)
 - [User Roles](#-user-roles)
+- [Tech Stack](#-tech-stack)
 - [Installation](#-installation)
 - [Configuration](#-configuration)
+- [Environment Variables](#-environment-variables)
 - [Usage](#-usage)
 - [API Documentation](#-api-documentation)
 - [File Structure](#-file-structure)
+- [Testing](#-testing)
+- [Deployment](#-deployment)
 - [Contributing](#-contributing)
 - [License](#-license)
+
+## 🧰 Tech Stack
+
+| Layer          | Technology                                   |
+| -------------- | -------------------------------------------- |
+| Backend        | Laravel 8 (PHP 7.3+ / 8.x)                   |
+| Database       | MySQL 5.7+                                    |
+| Front-end      | Blade templates, Bootstrap, Laravel Mix      |
+| Image handling | [Intervention Image](http://image.intervention.io/) |
+| Auth           | Laravel authentication + custom RBAC         |
+
+## 🖼️ Screenshots
+
+> Replace the placeholders below with real screenshots (place image files under `docs/screenshots/`).
+
+| Login | Student Dashboard | Issue Details |
+| ----- | ----------------- | ------------- |
+| ![Login screen placeholder](docs/screenshots/login.png) | ![Dashboard placeholder](docs/screenshots/dashboard.png) | ![Issue details placeholder](docs/screenshots/issue.png) |
 
 ## ✨ Features
 
@@ -87,14 +110,19 @@ A comprehensive web application for managing and tracking issues within a univer
 
 ### Step 1: Clone Repository
 ```bash
-git clone https://github.com/yourusername/WAD-Project.git
-cd WAD-Project
+git clone https://github.com/KavinduAluthwaththa/ReportEase.git
+cd ReportEase
 ```
 
 ### Step 2: Install Dependencies
 ```bash
 # Install PHP dependencies
 composer install
+
+# Install Node.js dependencies and compile front-end assets
+npm install
+npm run dev
+```
 
 ### Step 3: Environment Configuration
 ```bash
@@ -148,16 +176,16 @@ Visit `http://localhost:8000` to access the application.
 The system supports image uploads with the following specifications:
 - **Maximum File Size**: 2MB per image
 - **Allowed Formats**: JPG, PNG
-- **Maximum Images**: 1 per issue
+- **Maximum Images**: 3 per issue
 - **Thumbnail Size**: 200x200px (auto-generated)
 - **Storage Location**: `storage/app/public/evidence/`
 
 ### Role Configuration
-Default roles are seeded into the database:
-1. **Student** (ID: 1)
-2. **Faculty Staff** (ID: 2) 
+Default roles are seeded into the database (see `database/seeders/RoleSeeder.php`):
+1. **Admin** (ID: 1)
+2. **Faculty Staff** (ID: 2)
 3. **Maintenance Department** (ID: 3)
-4. **Admin** (ID: 4)
+4. **Student** (ID: 4)
 
 ### Email Configuration
 Update your `.env` file for email functionality:
@@ -171,6 +199,29 @@ MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS=noreply@reportease.com
 MAIL_FROM_NAME="ReportEase"
 ```
+
+## 🔑 Environment Variables
+
+All configuration is driven by the `.env` file (copied from `.env.example`). The most important variables:
+
+| Variable | Description | Example |
+| -------- | ----------- | ------- |
+| `APP_NAME` | Application name shown in UI/emails | `ReportEase` |
+| `APP_ENV` | Environment (`local`, `production`, `testing`) | `local` |
+| `APP_KEY` | Encryption key — generate with `php artisan key:generate` | *(auto-generated)* |
+| `APP_DEBUG` | Verbose error output — set `false` in production | `false` |
+| `APP_URL` | Base URL of the application | `http://localhost:8000` |
+| `DB_CONNECTION` | Database driver | `mysql` |
+| `DB_HOST` / `DB_PORT` | Database host and port | `127.0.0.1` / `3306` |
+| `DB_DATABASE` | Database name | `ReportEase` |
+| `DB_USERNAME` / `DB_PASSWORD` | Database credentials | `root` / *(secret)* |
+| `MAIL_MAILER` / `MAIL_HOST` / `MAIL_PORT` | Mail transport for password resets & notifications | `smtp` / `smtp.mailtrap.io` / `2525` |
+| `MAIL_USERNAME` / `MAIL_PASSWORD` | Mail credentials | *(secret)* |
+| `MAIL_FROM_ADDRESS` / `MAIL_FROM_NAME` | Default sender | `noreply@reportease.com` / `ReportEase` |
+| `QUEUE_CONNECTION` | Queue driver | `sync` |
+| `SESSION_DRIVER` | Session storage | `file` |
+
+> ⚠️ **Never commit a real `.env` file or secrets.** `.env` is git-ignored; only `.env.example` (with placeholders) is tracked.
 
 ## 📖 Usage
 
@@ -260,6 +311,50 @@ WAD-Project/
     └── app/public/evidence/         # Uploaded images
 ```
 
+## 🧪 Testing
+
+The project uses [PHPUnit](https://phpunit.de/) (configured in `phpunit.xml`).
+
+```bash
+# Run the full test suite
+php artisan test
+# or
+./vendor/bin/phpunit
+```
+
+Tests run against the `testing` environment (array cache/session/mail). To use an
+in-memory SQLite database, uncomment the `DB_CONNECTION`/`DB_DATABASE` lines in
+`phpunit.xml`.
+
+Code style is checked with [Laravel Pint](https://laravel.com/docs/pint):
+
+```bash
+# Check code style (no changes written)
+./vendor/bin/pint --test
+
+# Auto-fix code style
+./vendor/bin/pint
+```
+
+## 🚀 Deployment
+
+1. Provision a server with PHP, Composer, MySQL and a web server (Nginx/Apache).
+2. Clone the repository and install production dependencies:
+   ```bash
+   composer install --optimize-autoloader --no-dev
+   npm install && npm run prod
+   ```
+3. Configure `.env` for production (`APP_ENV=production`, `APP_DEBUG=false`, real DB/mail credentials) and run `php artisan key:generate`.
+4. Run migrations and seeders: `php artisan migrate --seed --force`.
+5. Link storage and cache config/routes/views:
+   ```bash
+   php artisan storage:link
+   php artisan config:cache
+   php artisan route:cache
+   php artisan view:cache
+   ```
+6. Point the web server document root to the `public/` directory and ensure `storage/` and `bootstrap/cache/` are writable.
+
 ## 🛠️ Development
 
 ### Adding New Features
@@ -326,35 +421,4 @@ For support and questions:
 
 ---
 
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Built and maintained by **Kavindu Aluthwaththa**. Powered by the [Laravel](https://laravel.com) framework.

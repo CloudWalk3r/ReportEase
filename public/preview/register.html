@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Create Account — ReportEase (Preview)</title>
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/register.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="app-container">
+        <header class="auth-header" role="banner">
+            <a href="welcome.html" class="logo-container" aria-label="ReportEase Home"><img src="../images/RE_White.png" alt="ReportEase Logo" class="logo" width="140" height="40"></a>
+            <nav class="auth-nav" aria-label="Authentication navigation">
+                <a href="login.html">Log In</a>
+                <img src="../images/user.png" alt="" class="profile-icon" width="36" height="36" aria-hidden="true">
+            </nav>
+        </header>
+        <main id="main-content" class="auth-main" tabindex="-1">
+            <div class="auth-left">
+                <div class="login-form">
+                    <h1 class="auth-heading">Sign up to <span class="brand-accent">ReportEase</span></h1>
+                    <p class="auth-subtitle">Register with your university details to report and track maintenance issues.</p>
+                    <form method="POST" action="#">
+                        <div class="form-row">
+                            <div class="form-group"><label for="first_name">First Name <span class="required-indicator" aria-hidden="true">*</span></label><input id="first_name" type="text" placeholder="e.g., Samanalee" required></div>
+                            <div class="form-group"><label for="last_name">Last Name <span class="required-indicator" aria-hidden="true">*</span></label><input id="last_name" type="text" placeholder="e.g., Fernando" required></div>
+                        </div>
+                        <div class="form-group"><label for="email2">Email Address <span class="required-indicator" aria-hidden="true">*</span></label><input id="email2" type="email" placeholder="you@std.appsc.sab.ac.lk" required></div>
+                        <div class="form-group"><label for="reg">Registration / Staff Number <span class="required-indicator" aria-hidden="true">*</span></label><input id="reg" type="text" placeholder="e.g., 21CIS004" required></div>
+                        <div class="form-row">
+                            <div class="form-group"><label for="pw">Password <span class="required-indicator" aria-hidden="true">*</span></label><input id="pw" type="password" placeholder="At least 8 characters" minlength="8" required><span id="password-hint" class="field-hint">Minimum 8 characters</span></div>
+                            <div class="form-group"><label for="pw2">Confirm Password <span class="required-indicator" aria-hidden="true">*</span></label><input id="pw2" type="password" placeholder="Re-enter password" required></div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group"><label for="role">Select Your Role <span class="required-indicator" aria-hidden="true">*</span></label>
+                                <select id="role" required>
+                                    <option value="" disabled selected>Select your university role</option>
+                                    <option>Student</option>
+                                    <option>Faculty Staff</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><label for="phone">Phone Number <span class="required-indicator" aria-hidden="true">*</span></label><input id="phone" type="tel" placeholder="e.g., 0771234567" required></div>
+                        </div>
+                        <div class="form-actions"><button type="button" class="btn-login">REGISTER</button></div>
+                        <div class="create-account-section"><p>Already have an account? <a href="login.html" class="inline-auth-link">Log In</a></p></div>
+                    </form>
+                </div>
+            </div>
+            <div class="auth-right" aria-hidden="true">
+                <div class="auth-background-image"><div class="background-text"><p class="auth-quote">Join the Faculty of Computing community in keeping our learning spaces safe and functional.</p></div></div>
+            </div>
+        </main>
+        <footer class="app-footer" role="contentinfo"><p>&copy; 2026 ReportEase &mdash; Faculty of Computing, Sabaragamuwa University of Sri Lanka.</p></footer>
+    </div>
+    <script src="../js/app-ui.js" defer></script>
+</body>
+</html>
